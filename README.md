@@ -1,1 +1,2 @@
-# sc7-telemetry
+# SC-7 Telemetry
+Car metrics display.
