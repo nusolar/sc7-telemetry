@@ -22,7 +22,6 @@ class CANParser:
         try:
             row = self.table[int(message[0:3], 16)]
         except KeyError:
-            print(int(message[0:3], 16))
             return
         #Parse data into a dictionary
         results = {}
