@@ -19,12 +19,12 @@ class CANParser:
             and ord(message[0]) not in range(65, 71) \
             and ord(message[0]) not in range(97, 103):
             message = message[1:]
+        #Parse data into a dictionary
+        results = {}
         try:
             row = self.table[int(message[0:3], 16)]
         except KeyError:
-            return
-        #Parse data into a dictionary
-        results = {}
+            return results
         results['Name'] = row['Name']
         #Isolate data
         data_length = int(message[3], 16)

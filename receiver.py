@@ -1,9 +1,7 @@
-import canparse
-import logging
-import logging.handlers
-import time
+from random import choices
+from canparse import CANParser
+from time import time
 import serial
-from typing import Callable
 
 class Receiver:
     """Receives & decodes CAN packets from a radio transmitter."""
@@ -17,30 +15,22 @@ class Receiver:
         self.log_file = log_file
         self.serial_port = serial_port
         self.baud_rate = baud_rate
-        #Logging setup
-        logging.getLogger('can_receiver').addHandler(
-            logging.handlers.RotatingFileHandler(
-                #TODO: Not completely sure how this behaves.
-                self.log_file, mode='w', maxBytes=5e8, backupCount=1))
-        logging.getLogger('can_receiver').setLevel(logging.INFO)
 
-    def get_packet(self) -> iter:
+    def get_packets(self) -> iter:
         """Generates CAN Packets."""
         with serial.Serial(self.serial_port, self.baud_rate) as receiver:
-            can_parser = canparse.CANParser(self.can_table)
+            can_parser = CANParser(self.can_table)
             while(True):
                 raw = receiver.read_until(b'\n').decode()
                 packet = can_parser.parse(raw)
-                logging.getLogger('can_receiver').info(packet)
-                packet['time'] = time.time()
+                packet['time'] = time()
                 yield packet
 
-    def get_packet_from_file(self, input_file: str) -> iter:
+    def get_packets_from_file(self, input_file: str) -> iter:
         """Generates CAN packets from file. Useful for testing."""
         with open(input_file) as input_file:
-            can_parser = canparse.CANParser(self.can_table)
+            can_parser = CANParser(self.can_table)
             for line in input_file:
                 packet = can_parser.parse(line)
-                logging.getLogger('can_receiver').info(packet)
-                packet['time'] = time.time()
+                packet['time'] = time()
                 yield packet
