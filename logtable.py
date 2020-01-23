@@ -32,6 +32,6 @@ with TemporaryFile(mode='w+t') as tempfile,\
             else:
                 result.append('')
         tempfile.write(','.join(result) + '\n')
-    logfile.write(','.join(headers) + '\n')
+    logfile.write(','.join(headers) + ',\n')
     tempfile.seek(0)
     logfile.write(tempfile.read())
