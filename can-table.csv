@@ -11,4 +11,4 @@ ID,Name,Start,F0N,F0W,F1N,F1W,F2N,F2W,F3N,F3W,F4N,F4W,F5N,F5W,F6N,F6W,F7N,F7W,F7
 0x771,MPPT ANS Sub,0,Tamb,8,Vout,10,x,6,Iin,10,y,6,Vin,10,z,6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 0x772,MPPT ANS Right,0,Tamb,8,Vout,10,x,6,Iin,10,y,6,Vin,10,z,6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 0x773,MPPT ANS Left,0,Tamb,8,Vout,10,x,6,Iin,10,y,6,Vin,10,z,6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-0x477,GPS,0,Time,7,Date,8,Fix,1,Quality,1,Latitude,8,Longitude,8,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+0x477,GPS,0,Time,2,Date,2,Fix,1,Quality,1,Latitude,2,Longitude,2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
