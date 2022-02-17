@@ -57,7 +57,7 @@ class Table:
 if __name__ == "__main__":
     """Basic battery cell table GUI demo"""
     app = Application()
-    for packet in Receiver().get_packets_from_file('examples/live_capture.txt'):
+    for packet in Receiver().get_packets():
         #Update GUI
         mppt_mapping = {
             'MPPT ANS Sub': 0,
