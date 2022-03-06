@@ -26,13 +26,13 @@ for packet in Receiver().get_packets():
     print(packet)
     packet_id = packet[0:3]
     if packet_id not in ids_to_names:
-        print(f'I dont know this id: {packet_id}')
+        print(f'I dont know this id: {packet_id}\n')
         continue
     if packet_id == '400':
         low = struct.unpack('<I', binascii.unhexlify(packet[3:11]))[0]
         high = struct.unpack('<I', binascii.unhexlify(packet[11:]))[0]
     elif packet_id == '401':
-        print(f'status information: {packet}')
+        print(f'status information: {packet}\n')
         continue
     else:
         low = struct.unpack('<f', binascii.unhexlify(packet[3:11]))[0]
