@@ -14,10 +14,10 @@ very compicated, since it delegates most of the work to reciever.py. Right
 now, it simply prints the parsed data to the screen, but in the future it
 will send data to the base-station or to the driver display gui as needed.
 The important thing to know is that if you want to read directly of the serial
-port, you should call `get_packets` instead of `get_packets_from_file`.
-If you want to use `get_packet_from_file`, as it stands right now, you
-have to specifiy a filename referring to a 'cleaned' data file (like 
-examples/collected_cleaned.dat).
+port, you should call `Reciever.get_packets` instead of 
+`Reciever.get_packets_from_file`. If you want to use `get_packet_from_file`, 
+as it stands right now, you have to specifiy a filename referring to a 
+'cleaned' data file (like examples/collected_cleaned.dat).
 
 ### reciever.py
 The purpose of the `Reciever` class is to open a connection with a serial
@@ -40,4 +40,11 @@ A Reciever object has 4 fields:
                       the documention of the motor-controllers and maybe the 
                       CAN-USB to find the new value.
 
-
+With these fields initialized, you may call `Reciever.get_packets`, which reads
+and parses packets off the serial port. The data that comes off the serial port
+is one huge line of characters. Individual CAN packets begin with a colon and
+end with a semicolon. Packets begin with an 'S' after the colon and have an 'N'
+after the CAN_ID. The rest of the characters in a packet are hexadecimal digits.
+The reciever cleans up the non-hexadecimal characters and add newlines to before
+handing the packets off to the parser. Once parsed, individual items, the single
+pieces of data we care about (e.g. motor velocity, )
