@@ -6,7 +6,7 @@ import serial
 class Receiver:
     """Receives & decodes CAN packets from a radio transmitter."""
     def __init__(self,
-        can_table: str = 'new_can_table.csv',
+        can_table: str = 'can_table.csv',
         log_file: str = 'log.txt',
         serial_port: str = '/dev/tty.usbserial-AC00QTXJ',
         baud_rate: int = 500000):
@@ -27,16 +27,16 @@ class Receiver:
                 raw = raw.replace('S', '')
                 raw = raw.replace('N', '')
                 packet = can_parser.parse(raw)
-                print(packet)
                 # packet['time'] = time()
-                # yield raw
+                for item in packet:
+                    yield item
 
-    def get_packets_from_file(self, input_file: str):
+    def get_packets_from_file(self, input_file_name: str) -> iter:
         """Generates CAN packets from file. Useful for testing."""
-        with open(input_file) as input_file:
+        with open(input_file_name) as input_file:
             can_parser = CANParser(self.can_table)
             for line in input_file:
                 packet = can_parser.parse(line)
-                print(packet)
                 # packet['time'] = time()
-                # yield packet
+                for item in packet:
+                    yield item

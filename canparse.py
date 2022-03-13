@@ -34,7 +34,5 @@ class CANParser:
             results['data'] = struct.unpack('<' + row['Type'],
                 binascii.unhexlify(message[3 + hex_offset:3 + hex_offset + hex_length]))[0]
             result_list += [results]
-        print(result_list)
-        print()
         return result_list
 
