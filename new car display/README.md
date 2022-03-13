@@ -1,6 +1,6 @@
 # Preliminary Solar Car Display
 Chibueze Onyenemezu, 2021-2022
-![Alt text](images/main_car_display.png?raw=true "main car display")
+![Alt text](./images/main_car_display.png?raw=true "main car display")
 
 The display is a GUI made with Python's Tkinter library.
 It reads from Receiver.py and constantly updates the values on the screen.
