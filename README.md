@@ -46,5 +46,9 @@ is one huge line of characters. Individual CAN packets begin with a colon and
 end with a semicolon. Packets begin with an 'S' after the colon and have an 'N'
 after the CAN_ID. The rest of the characters in a packet are hexadecimal digits.
 The reciever cleans up the non-hexadecimal characters and add newlines to before
-handing the packets off to the parser. Once parsed, individual items, the single
-pieces of data we care about (e.g. motor velocity, )
+handing the packets off to the parser. Once parsed, individual items--the single
+pieces of data we care about (e.g. vehicle velocity, motor currents, etc), which
+typically come in multiples per packet--are assembled into a generator. Generators
+are fancy python constructs that are not really worth worrying about. Anyway,
+callers of this function can iterate through the generator, item by item, to
+get the parsed data.
