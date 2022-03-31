@@ -1,3 +1,5 @@
+#the same graphong thing but opens in  separate windows
+
 import random
 import queue
 import time
@@ -32,8 +34,8 @@ a3xM2Vo = a3x[2,1]
 
 
 #x and y axes
-xs = [0,1,2,3,4,5,6,7,8,9,10]
-xst = [0, 1, 2, 3, 4 ,5, 6, 7, 8, 9, 10]
+xs = [0,1,2,3,4,5,6,7,8,9,10] # for 10 seconds at a time
+xst = [0, 1, 2, 3, 4 ,5, 6, 7, 8, 9, 10] #for the entire time
 ys = queue.Queue(maxsize = 12)
 
 otherClass = Receiver()
